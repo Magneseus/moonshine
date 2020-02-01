@@ -53,17 +53,21 @@ public class Player : MonoBehaviour
             controller.Move(new Vector3(0.0f, -0.5f, 0.0f));
         }
 
-        // Dropping items
-        if (heldObject != null && rewiredPlayer.GetButtonUp("Interact"))
+        if (rewiredPlayer.GetButtonUp("Interact"))
         {
-            if (heldObjectStall)
+            // Dropping items
+            if (heldObject != null)
             {
-                heldObjectStall = false;
+                if (heldObjectStall)
+                {
+                    heldObjectStall = false;
+                }
+                else
+                {
+                    DropHeldObject();
+                }
             }
-            else
-            {
-                DropHeldObject();
-            }
+            RemoveAllInteractables();
         }
     }
 

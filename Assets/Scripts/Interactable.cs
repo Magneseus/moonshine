@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Interactable : MonoBehaviour
 {
     public bool oneShot = false;
-    protected List<Player> interactors = new List<Player>();
+    protected HashSet<Player> interactors = new HashSet<Player>();
 
     protected void Update()
     {
