@@ -2,17 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Interactable : MonoBehaviour
+public abstract class Interactable : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public bool oneShot = false;
+    protected List<Player> interactors = new List<Player>();
+
+    protected void Update()
     {
-        
+        if (!oneShot)
+            OnInteract(null);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnInteractStart(Player player)
     {
-        
+        if (!oneShot)
+            interactors.Add(player);
+        else
+            OnInteract(player);
     }
+
+    public void OnInteractExit(Player player)
+    {
+        if (!oneShot)
+            interactors.Remove(player);
+    }
+
+    protected abstract void OnInteract(Player interactor = null);
 }
