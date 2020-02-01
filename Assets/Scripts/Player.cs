@@ -2,22 +2,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Rewired;
 
 public class Player : MonoBehaviour
 {
     // Public Vars
     public float moveSpeed = 0.5f;
+    public int playerId = 0;
 
     // Private Vars
+    private Rewired.Player rewiredPlayer;
     private bool input_interacting = false;
-    private float input_horizontal = 0.0f;
-    private float input_vertical = 0.0f;
+    private float input_horizontal, input_vertical, input_look_horizontal, input_look_vertical;
     private List<Interactable> interactables = new List<Interactable>();
+
+    private bool heldObjectStall = false;
 
     // Components
     public GameObject holdLocation;
     private GameObject heldObject;
     private CharacterController controller;
+
+    private void Awake()
+    {
+        rewiredPlayer = ReInput.players.GetPlayer(playerId);
+    }
 
     void Start()
     {
@@ -43,6 +52,19 @@ public class Player : MonoBehaviour
         {
             controller.Move(new Vector3(0.0f, -0.5f, 0.0f));
         }
+
+        // Dropping items
+        if (heldObject != null && rewiredPlayer.GetButtonUp("Interact"))
+        {
+            if (heldObjectStall)
+            {
+                heldObjectStall = false;
+            }
+            else
+            {
+                DropHeldObject();
+            }
+        }
     }
 
     public bool SetHeldObject(GameObject heldObject)
@@ -51,6 +73,8 @@ public class Player : MonoBehaviour
             return false;
 
         this.heldObject = Instantiate(heldObject, holdLocation.transform);
+        this.heldObject.GetComponent<Rigidbody>().isKinematic = true;
+        this.heldObjectStall = true;
         
         return true;
     }
@@ -60,25 +84,23 @@ public class Player : MonoBehaviour
         if (this.heldObject != null)
         {
             this.heldObject.transform.parent = null;
+            this.heldObject.GetComponent<Rigidbody>().isKinematic = false;
             this.heldObject = null;
         }
     }
 
     private void UpdateInputs()
     {
-        input_horizontal = Input.GetAxis("Horizontal");
-        input_vertical = Input.GetAxis("Vertical");
+        //input_horizontal = Input.GetAxis("Horizontal");
+        //input_vertical = Input.GetAxis("Vertical");
+        input_horizontal = rewiredPlayer.GetAxis("MHorizontal");
+        input_vertical = rewiredPlayer.GetAxis("MVertical");
 
-        bool newInteract = Input.GetAxis("Submit") != 0.0f;
-        if (!newInteract && input_interacting)
-        {
-            RemoveAllInteractables();
-            if (heldObject)
-            {
-                DropHeldObject();
-            }
-        }
-        input_interacting = newInteract;
+        input_look_horizontal = rewiredPlayer.GetAxis("LHorizontal");
+        input_look_vertical = rewiredPlayer.GetAxis("LVertical");
+
+        //bool newInteract = Input.GetAxis("Submit") != 0.0f;
+        input_interacting = rewiredPlayer.GetButton("Interact");
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)

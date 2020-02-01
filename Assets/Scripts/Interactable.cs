@@ -9,7 +9,7 @@ public abstract class Interactable : MonoBehaviour
 
     protected void Update()
     {
-        if (!oneShot && this.interactors.Capacity > 0)
+        if (!oneShot && this.interactors.Count > 0)
             OnInteract(null);
     }
 
