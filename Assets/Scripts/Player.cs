@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public float moveSpeed = 0.5f;
+
     private CapsuleCollider bodyCollider;
     private Rigidbody bodyRB;
     private CharacterController controller;
@@ -23,7 +25,13 @@ public class Player : MonoBehaviour
         float leftright = Input.GetAxis("Horizontal");
 
         Vector3 movement = new Vector3(leftright, 0.0f, updown);
+        movement *= moveSpeed;
 
         controller.Move(movement);
+
+        if (!controller.isGrounded)
+        {
+            controller.Move(new Vector3(0.0f, -0.5f, 0.0f));
+        }
     }
 }
