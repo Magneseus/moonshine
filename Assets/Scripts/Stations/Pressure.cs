@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,7 +19,7 @@ public class Pressure : Station
         float percentRelieved = Time.deltaTime / timeToRelieve;
         currentPercentage -= percentRelieved;
 
-        timeElapsed = animationLength * currentPercentage;
+        timeElapsed = Math.Max(animationLength * currentPercentage, 0);
     }
 
     protected override void BuildPressure()

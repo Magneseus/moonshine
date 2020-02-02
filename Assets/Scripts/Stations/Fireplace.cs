@@ -32,10 +32,15 @@ public class Fireplace : Station
         base.Tend();
 
         // fire is tended to a configurable time later
-        StartCoroutine(delayedTend());
+        StartCoroutine(DelayedTend());
     }
 
-    private IEnumerator delayedTend()
+    protected void Overburn()
+    {
+        Debug.Log("Overburn!");
+    }
+
+    private IEnumerator DelayedTend()
     {
         yield return tendDelay;
 
@@ -46,7 +51,11 @@ public class Fireplace : Station
         currentPercentage -= logEffect;
         timeElapsed = currentPercentage * animationLength;
 
-        // check for overburn! (ie. current < 0)
-        Debug.Log("Is overburning? " + (timeElapsed < 0));
+        // check for overburn!
+        if (timeElapsed < 0)
+        {
+            Overburn();
+            timeElapsed = 0;
+        }
     }
 }
