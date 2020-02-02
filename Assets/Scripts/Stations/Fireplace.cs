@@ -10,11 +10,56 @@ public class Fireplace : Station
 
     public float tendDelaySeconds = 2;
 
+    public GameObject smallFlame = null;
+    public GameObject medFlame = null;
+    public GameObject largeFlame = null;
+
     private WaitForSeconds tendDelay;
     public void Start()
     {
         base.Start();
         tendDelay = new WaitForSeconds(tendDelaySeconds);
+        smallFlame.SetActive(false);
+        largeFlame.SetActive(false);
+
+        medFlame.SetActive(true);
+    }
+
+    public void Update()
+    {
+        base.Update();
+        if (current > 80)
+        {
+            if (!smallFlame.activeSelf)
+            {
+                medFlame.SetActive(false);
+                largeFlame.SetActive(false);
+
+                smallFlame.SetActive(true);
+            }
+        }
+        else if (current > 20)
+        {
+            if (!medFlame.activeSelf)
+            {
+                smallFlame.SetActive(false);
+                largeFlame.SetActive(false);
+
+                medFlame.SetActive(true);
+            }
+
+        }
+        else
+        {
+            if (!largeFlame.activeSelf)
+            {
+                smallFlame.SetActive(false);
+                medFlame.SetActive(false);
+
+                largeFlame.SetActive(true);
+            }
+
+        }
     }
 
     protected override void OnInteract(Player interactor = null)
