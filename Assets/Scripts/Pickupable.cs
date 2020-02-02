@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Pickupable : Interactable
 {
+
+    public string itemName = "";
+
     private void Start()
     {
         this.oneShot = true;

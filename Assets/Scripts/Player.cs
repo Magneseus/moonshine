@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
         controller.Move(movement);
 
         // Setting anim params
-        m_Animator.SetFloat("Speed", movement.x);
+        m_Animator.SetFloat("Speed", Math.Abs(movement.x) + Math.Abs(movement.z));
 
         // Looking direction
         Vector3 lookDir = new Vector3(input_look_horizontal, 0.0f, input_look_vertical);
@@ -68,6 +68,7 @@ public class Player : MonoBehaviour
 
         if (rewiredPlayer.GetButton("Interact"))
         {
+
             if (interactables.Count > 0)
             {
                 // Find the closest interactable and interact with it
@@ -77,6 +78,9 @@ public class Player : MonoBehaviour
 
                 foreach (Interactable interactable in interactables)
                 {
+                    if (interactable.gameObject == heldObject)
+                        continue;
+
                     dist = Vector3.Distance(this.transform.position, interactable.transform.position);
                     if (dist < minDist)
                     {
@@ -84,11 +88,11 @@ public class Player : MonoBehaviour
                         closestInteractable = interactable;
                     }
                 }
-
-                closestInteractable.OnInteractStart(this);
-
-                //m_Animator.SetBool("IsPickingUp", true);
-                anim["Pickup"].AddMixingTransform(joint, true);
+                if (closestInteractable != null)
+                {
+                    closestInteractable.OnInteractStart(this);
+                }
+                //anim["Pickup"].AddMixingTransform(joint, true);
             }
         }
         else if (rewiredPlayer.GetButtonUp("Interact"))
@@ -135,7 +139,8 @@ public class Player : MonoBehaviour
             heldObject.transform.localRotation = Quaternion.identity;
         }
         this.heldObject.GetComponent<Rigidbody>().isKinematic = true;
-        
+        m_Animator.SetTrigger("IsPickingUp");
+
         return true;
     }
 
@@ -158,6 +163,9 @@ public class Player : MonoBehaviour
     {
         if (this.heldObject != null)
         {
+            m_Animator.SetTrigger("IsPickingUp");
+
+            OnTriggerExit(this.heldObject.GetComponent<Collider>());
             Destroy(this.heldObject);
             this.heldObject = null;
         }

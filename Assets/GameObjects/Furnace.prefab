@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 546962259339090954}
   - component: {fileID: 3843317150992135007}
+  - component: {fileID: 2318580048077907806}
+  - component: {fileID: 8937903444223621438}
   m_Layer: 0
   m_Name: Furnace
   m_TagString: Untagged
@@ -45,6 +47,42 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.178913, y: 10.7469635, z: 6.064913}
   m_Center: {x: -0.08848894, y: 4.8734818, z: -0.18381834}
+--- !u!54 &2318580048077907806
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7051197454634626243}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &8937903444223621438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7051197454634626243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65a25f3d36df6be44bee66d222138cd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oneShot: 0
+  clip: {fileID: 7400000, guid: d2627247a0c92c544b7ab3d68a0c8378, type: 2}
+  timeToRelieve: 3
+  speedMultiplier: 1
+  current: 0
+  percentagePerLog: 25
+  logStrengthVariance: 5
+  tendDelaySeconds: 2
 --- !u!1001 &35031834489131287
 PrefabInstance:
   m_ObjectHideFlags: 0

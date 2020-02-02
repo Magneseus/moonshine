@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &339584056758465151
+--- !u!1 &2902360495957475514
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,45 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3467696300566790181}
-  - component: {fileID: 8040997000497607043}
-  - component: {fileID: 2263650050906490151}
+  - component: {fileID: 6883717315476449625}
+  - component: {fileID: 2473551130960144727}
+  - component: {fileID: 6762075685810238134}
   m_Layer: 0
-  m_Name: pCube1
+  m_Name: pCylinder1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3467696300566790181
+--- !u!4 &6883717315476449625
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 339584056758465151}
+  m_GameObject: {fileID: 2902360495957475514}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5905000788819979254}
+  m_Father: {fileID: 6056741800341071341}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8040997000497607043
+--- !u!33 &2473551130960144727
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 339584056758465151}
-  m_Mesh: {fileID: 4068373912626513877, guid: 679c603a768d1e5429cc102d1c9f7b93, type: 3}
---- !u!23 &2263650050906490151
+  m_GameObject: {fileID: 2902360495957475514}
+  m_Mesh: {fileID: -5076798556035486163, guid: ed20bee070ef63f4f884cc21b35f2a13, type: 3}
+--- !u!23 &6762075685810238134
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 339584056758465151}
+  m_GameObject: {fileID: 2902360495957475514}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -57,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8529481535521766085, guid: 64bf40f57fc767e47806eec1eccf85df, type: 3}
+  - {fileID: 2100000, guid: 6839647efdb535a45a8d70783075b38c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -78,7 +78,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!1 &7469676513924930021
+--- !u!1 &7085999820946544638
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,53 +86,67 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5905000788819979254}
-  - component: {fileID: 4753725464462663329}
-  - component: {fileID: 5369859282664321354}
-  - component: {fileID: 7523630360736562085}
+  - component: {fileID: 6056741800341071341}
+  - component: {fileID: 4566688667154662688}
+  - component: {fileID: 4186691005469352746}
+  - component: {fileID: 4411483871755078058}
   m_Layer: 0
-  m_Name: Interactable_Potato
+  m_Name: Vodka
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5905000788819979254
+--- !u!4 &6056741800341071341
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7469676513924930021}
+  m_GameObject: {fileID: 7085999820946544638}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
-  - {fileID: 3467696300566790181}
+  - {fileID: 6883717315476449625}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4753725464462663329
+--- !u!114 &4566688667154662688
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7469676513924930021}
+  m_GameObject: {fileID: 7085999820946544638}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 251fff38fdb6f5f43a80cf6f803e27ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   oneShot: 0
-  itemName: Potato
---- !u!54 &5369859282664321354
+  itemName: Vodka
+--- !u!136 &4186691005469352746
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7085999820946544638}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.87
+  m_Height: 4.15
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.8, z: 0}
+--- !u!54 &4411483871755078058
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7469676513924930021}
+  m_GameObject: {fileID: 7085999820946544638}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -142,16 +156,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &7523630360736562085
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7469676513924930021}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.24, y: 3.209477, z: 1.9275578}
-  m_Center: {x: 0, y: 1.5021636, z: -0.0072160363}
