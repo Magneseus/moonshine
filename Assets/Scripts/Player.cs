@@ -21,6 +21,11 @@ public class Player : MonoBehaviour
     private GameObject heldObject;
     private CharacterController controller;
 
+    //Fetch the Animator
+    Animator m_Animator;
+    public Animation anim;
+    public Transform joint;
+
     private void Awake()
     {
         rewiredPlayer = ReInput.players.GetPlayer(playerId);
@@ -34,6 +39,8 @@ public class Player : MonoBehaviour
         {
             Debug.LogError("No hold location for player! Please fix!");
         }
+
+        m_Animator = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -44,6 +51,9 @@ public class Player : MonoBehaviour
         Vector3 movement = new Vector3(input_horizontal, 0.0f, input_vertical);
         movement *= moveSpeed;
         controller.Move(movement);
+
+        // Setting anim params
+        m_Animator.SetFloat("Speed", Math.Abs(movement.x) + Math.Abs(movement.z));
 
         // Looking direction
         Vector3 lookDir = new Vector3(input_look_horizontal, 0.0f, input_look_vertical);
@@ -58,6 +68,7 @@ public class Player : MonoBehaviour
 
         if (rewiredPlayer.GetButton("Interact"))
         {
+
             if (interactables.Count > 0)
             {
                 // Find the closest interactable and interact with it
@@ -67,6 +78,9 @@ public class Player : MonoBehaviour
 
                 foreach (Interactable interactable in interactables)
                 {
+                    if (interactable.gameObject == heldObject)
+                        continue;
+
                     dist = Vector3.Distance(this.transform.position, interactable.transform.position);
                     if (dist < minDist)
                     {
@@ -74,8 +88,11 @@ public class Player : MonoBehaviour
                         closestInteractable = interactable;
                     }
                 }
-
-                closestInteractable.OnInteractStart(this);
+                if (closestInteractable != null)
+                {
+                    closestInteractable.OnInteractStart(this);
+                }
+                //anim["Pickup"].AddMixingTransform(joint, true);
             }
         }
         else if (rewiredPlayer.GetButtonUp("Interact"))
@@ -122,7 +139,8 @@ public class Player : MonoBehaviour
             heldObject.transform.localRotation = Quaternion.identity;
         }
         this.heldObject.GetComponent<Rigidbody>().isKinematic = true;
-        
+        m_Animator.SetTrigger("IsPickingUp");
+
         return true;
     }
 
@@ -145,6 +163,9 @@ public class Player : MonoBehaviour
     {
         if (this.heldObject != null)
         {
+            m_Animator.SetTrigger("IsPickingUp");
+
+            OnTriggerExit(this.heldObject.GetComponent<Collider>());
             Destroy(this.heldObject);
             this.heldObject = null;
         }

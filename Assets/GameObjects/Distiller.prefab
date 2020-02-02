@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1370074596862243514}
   - component: {fileID: 353682638220709868}
+  - component: {fileID: 6115144284900032559}
+  - component: {fileID: 6744551618135244706}
   m_Layer: 0
   m_Name: Distiller
   m_TagString: Untagged
@@ -46,6 +48,47 @@ CapsuleCollider:
   m_Height: 12.876603
   m_Direction: 2
   m_Center: {x: 0, y: 3.1999998, z: -3.5916982}
+--- !u!54 &6115144284900032559
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217430748494142374}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &6744551618135244706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217430748494142374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b347fc1c7892e7468557f2746e3e017, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oneShot: 1
+  ingredients: []
+  timeToProcess: 5
+  processTime: 0
+  isProcessing: 0
+  processingDone: 0
+  wineObject: {fileID: 8385356372652209855, guid: b3a6fec3878e61148b2c92522a8edee1,
+    type: 3}
+  beerObject: {fileID: 4012346200078014882, guid: d2bc302a7d53f8245a7e756fef09882a,
+    type: 3}
+  vodkaObject: {fileID: 4566688667154662688, guid: db43090bcf69722458ac95cb668aa2c3,
+    type: 3}
+  producedObject: {fileID: 0}
 --- !u!1001 &1677687532013778168
 PrefabInstance:
   m_ObjectHideFlags: 0

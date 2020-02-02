@@ -26,6 +26,7 @@ public abstract class Interactable : MonoBehaviour
 
     public void OnInteractStart(Player player)
     {
+        Debug.Log("interacting " + this + " and " + player);
         if (!oneShot)
             interactors.Add(player);
         else
