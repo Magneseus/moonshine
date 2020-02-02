@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3231754454710766514}
   - component: {fileID: 7740928896748141816}
+  - component: {fileID: 8595628360136590574}
+  - component: {fileID: 479489992148925715}
   m_Layer: 0
   m_Name: Firewood
   m_TagString: Untagged
@@ -50,6 +52,32 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8595628360136590574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3068369962114282124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 251fff38fdb6f5f43a80cf6f803e27ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oneShot: 1
+--- !u!135 &479489992148925715
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3068369962114282124}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.55
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4139697981603718223
 GameObject:
   m_ObjectHideFlags: 0
@@ -77,7 +105,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4139697981603718223}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.233, y: -0.18, z: -0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 3231754454710766514}
@@ -170,7 +198,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6423404588581275744}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.241, y: 0.335, z: 0}
+  m_LocalPosition: {x: 0.008000001, y: 0.155, z: 0}
   m_LocalScale: {x: 0.5, y: 0.50000024, z: 0.50000024}
   m_Children: []
   m_Father: {fileID: 3231754454710766514}
@@ -263,7 +291,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6606136718961080899}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.504, y: 0, z: 0}
+  m_LocalPosition: {x: 0.271, y: -0.18, z: 0}
   m_LocalScale: {x: 0.5, y: 0.50000024, z: 0.50000024}
   m_Children: []
   m_Father: {fileID: 3231754454710766514}

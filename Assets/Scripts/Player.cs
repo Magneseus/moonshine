@@ -105,12 +105,23 @@ public class Player : MonoBehaviour
         input_interacting = rewiredPlayer.GetButton("Interact");
     }
 
-    public bool SetHeldObject(GameObject heldObject)
+    public bool SetHeldObject(GameObject heldObject, bool create=true)
     {
+
         if (this.heldObject)
             return false;
 
-        this.heldObject = Instantiate(heldObject, holdLocation.transform);
+        if (create)
+        {
+            this.heldObject = Instantiate(heldObject, holdLocation.transform);
+        }
+        else
+        {
+            this.heldObject = heldObject;
+            heldObject.transform.parent = holdLocation.transform;
+            heldObject.transform.position = holdLocation.transform.position;
+            heldObject.transform.localRotation = Quaternion.identity;
+        }
         this.heldObject.GetComponent<Rigidbody>().isKinematic = true;
         
         return true;
@@ -149,7 +160,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         Interactable interactable;
         if (other.gameObject.TryGetComponent<Interactable>(out interactable))
@@ -162,11 +173,15 @@ public class Player : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         Interactable interactable;
-        if (IsInteracting() && other.gameObject.TryGetComponent<Interactable>(out interactable))
+        if (other.gameObject.TryGetComponent<Interactable>(out interactable))
         {
             // If there is a valid interactable, stop interaction
-            interactable.OnInteractExit(this);
             interactables.Remove(interactable);
+
+            if (IsInteracting())
+            {
+                interactable.OnInteractExit(this);
+            }
         }
     }
 
@@ -181,7 +196,5 @@ public class Player : MonoBehaviour
         {
             item.OnInteractExit(this);
         }
-
-        interactables.Clear();
     }
 }

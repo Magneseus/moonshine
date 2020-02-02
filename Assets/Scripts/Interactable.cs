@@ -11,7 +11,10 @@ public abstract class Interactable : MonoBehaviour
     {
         if (!TryGetComponent<Rigidbody>(out _) || !TryGetComponent<Collider>(out _))
         {
-            Debug.LogError(string.Format("Interactable {0} missing a rigidbody or collider! Please fix!", this.name));
+            if (GetComponentInChildren<Collider>() == null || GetComponentInChildren<Rigidbody>() == null)
+            {
+                Debug.LogError(string.Format("Interactable {0} missing a rigidbody or collider! Please fix!", this.name));
+            }
         }
     }
 

@@ -125,8 +125,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1520ca20e5a31d74f8c7c5d739e45ce3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.5
   playerId: 0
+  moveSpeed: 0.4
+  hitForce: 10
   holdLocation: {fileID: 8045429010225414116}
 --- !u!143 &7025746109164582781
 CharacterController:

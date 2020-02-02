@@ -10,7 +10,6 @@ public class Fireplace : Station
         {
             GameObject heldItem = interactor.GetHeldObject();
             interactor.ConsumeHeldObject();
-            Debug.Log("ou burned");
         }
     }
 }
