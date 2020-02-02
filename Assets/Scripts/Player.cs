@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     private Rewired.Player rewiredPlayer;
     private bool input_interacting = false;
     private float input_horizontal, input_vertical, input_look_horizontal, input_look_vertical;
-    private List<Interactable> interactables = new List<Interactable>();
+    private HashSet<Interactable> interactables = new HashSet<Interactable>();
 
     private bool heldObjectStall = false;
 
@@ -56,18 +56,12 @@ public class Player : MonoBehaviour
         if (rewiredPlayer.GetButtonUp("Interact"))
         {
             // Dropping items
-            if (heldObject != null)
-            {
-                if (heldObjectStall)
-                {
-                    heldObjectStall = false;
-                }
-                else
-                {
-                    DropHeldObject();
-                }
-            }
             RemoveAllInteractables();
+        }
+
+        if (rewiredPlayer.GetButtonUp("Drop"))
+        {
+            DropHeldObject();
         }
     }
 
@@ -83,12 +77,26 @@ public class Player : MonoBehaviour
         return true;
     }
 
+    public GameObject GetHeldObject()
+    {
+        return this.heldObject;
+    }
+
     public void DropHeldObject()
     {
         if (this.heldObject != null)
         {
             this.heldObject.transform.parent = null;
             this.heldObject.GetComponent<Rigidbody>().isKinematic = false;
+            this.heldObject = null;
+        }
+    }
+
+    public void ConsumeHeldObject()
+    {
+        if (this.heldObject != null)
+        {
+            Destroy(this.heldObject);
             this.heldObject = null;
         }
     }

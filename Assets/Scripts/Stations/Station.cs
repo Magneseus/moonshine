@@ -10,9 +10,9 @@ public abstract class Station : Interactable
     public float speedMultiplier = 1.0f;
     public float current;
 
-    private float timeElapsed = 0;
-    private AnimationCurve curve;
-    private float animationLength;
+    protected float timeElapsed = 0;
+    protected AnimationCurve curve;
+    protected float animationLength;
 
     public void Start()
     {
@@ -24,32 +24,26 @@ public abstract class Station : Interactable
 
     public void FixedUpdate()
     {
-        buildPressure();
+        BuildPressure();
 
         current = curve.Evaluate(timeElapsed);
         if (current >= 100)
         {
-            explode();
+            Explode();
         }
     }
 
-    protected virtual void buildPressure()
+    protected virtual void BuildPressure()
     {
        timeElapsed += Time.deltaTime * speedMultiplier;
     }
 
-    protected virtual void tend()
+    protected virtual void Tend()
     {
-        // relieving pressure
-        Debug.Log("relieving pressure");
-        float currentPercentage = timeElapsed / animationLength;
-        float percentRelieved = Time.deltaTime / timeToRelieve;
-        currentPercentage -= percentRelieved;
-
-        timeElapsed = animationLength * currentPercentage;
+        
     }
 
-    protected virtual void explode()
+    protected virtual void Explode()
     {
         //Debug.Log("Boom.");
     }

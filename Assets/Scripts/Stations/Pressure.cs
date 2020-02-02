@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class Pressure : Station
 {
-    public bool playerInteracting = false;
     protected override void OnInteract(Player interactor = null)
     {
-        tend();
+        Tend();
     }
 
-    protected override void buildPressure()
+    protected override void Tend()
+    {
+        base.Tend();
+
+        // relieving pressure
+        float currentPercentage = timeElapsed / animationLength;
+        float percentRelieved = Time.deltaTime / timeToRelieve;
+        currentPercentage -= percentRelieved;
+
+        timeElapsed = animationLength * currentPercentage;
+    }
+
+    protected override void BuildPressure()
     {
         if (interactors.Count == 0)
-            base.buildPressure();
+            base.BuildPressure();
     }
 }
