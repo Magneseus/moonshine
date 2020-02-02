@@ -10,9 +10,11 @@ public abstract class Station : Interactable
     public float speedMultiplier = 1.0f;
     public float current;
 
-    protected float timeElapsed = 0;
+    public float timeElapsed = 0;
     protected AnimationCurve curve;
     protected float animationLength;
+
+    public GameObject alarm = null;
 
     public void Start()
     {
@@ -20,6 +22,7 @@ public abstract class Station : Interactable
         timeElapsed = 0;
 
         animationLength = curve.keys[curve.length - 1].time;
+        alarm.SetActive(false);
     }
 
     public void FixedUpdate()
@@ -31,6 +34,13 @@ public abstract class Station : Interactable
         {
             Explode();
             timeElapsed = animationLength;
+        }
+        else
+        {
+            if (alarm.activeSelf)
+            {
+                alarm.SetActive(false);
+            }
         }
     }
 
@@ -46,6 +56,7 @@ public abstract class Station : Interactable
 
     protected virtual void Explode()
     {
-        //Debug.Log("Boom.");
+        if (!alarm.activeSelf)
+            alarm.SetActive(true);
     }
 }
