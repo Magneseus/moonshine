@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     // Public Vars
     public int playerId = 0;
     public float moveSpeed = 0.5f;
-    public float hitForce = 1.0f;
 
     // Private Vars
     private Rewired.Player rewiredPlayer;
@@ -156,7 +155,7 @@ public class Player : MonoBehaviour
         // Called when the character hits another object with a collider
         if (hit.rigidbody)
         {
-            hit.rigidbody.AddForce(hit.moveDirection * hitForce);
+            hit.rigidbody.AddForce(hit.moveDirection * hit.moveLength);
         }
     }
 
