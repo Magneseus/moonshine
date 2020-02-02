@@ -7,6 +7,14 @@ public abstract class Interactable : MonoBehaviour
     public bool oneShot = false;
     protected HashSet<Player> interactors = new HashSet<Player>();
 
+    private void Awake()
+    {
+        if (!TryGetComponent<Rigidbody>(out _) || !TryGetComponent<Collider>(out _))
+        {
+            Debug.LogError(string.Format("Interactable {0} missing a rigidbody or collider! Please fix!", this.name));
+        }
+    }
+
     protected void Update()
     {
         if (!oneShot && this.interactors.Count > 0)

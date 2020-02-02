@@ -47,6 +47,11 @@ public class Player : MonoBehaviour
         movement *= moveSpeed;
         controller.Move(movement);
 
+        // Looking direction
+        Vector3 lookDir = new Vector3(input_look_horizontal, 0.0f, input_look_vertical);
+        lookDir += controller.transform.position;
+        controller.transform.LookAt(lookDir);
+
         // Apply gravity if falling
         if (!controller.isGrounded)
         {
