@@ -21,6 +21,9 @@ public class Player : MonoBehaviour
     private GameObject heldObject;
     private CharacterController controller;
 
+    //Fetch the Animator
+    Animator m_Animator;
+
     private void Awake()
     {
         rewiredPlayer = ReInput.players.GetPlayer(playerId);
@@ -34,6 +37,8 @@ public class Player : MonoBehaviour
         {
             Debug.LogError("No hold location for player! Please fix!");
         }
+
+        m_Animator = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -44,6 +49,9 @@ public class Player : MonoBehaviour
         Vector3 movement = new Vector3(input_horizontal, 0.0f, input_vertical);
         movement *= moveSpeed;
         controller.Move(movement);
+
+        // Setting anim params
+        m_Animator.SetFloat("Speed", movement.x);
 
         // Looking direction
         Vector3 lookDir = new Vector3(input_look_horizontal, 0.0f, input_look_vertical);
@@ -76,6 +84,8 @@ public class Player : MonoBehaviour
                 }
 
                 closestInteractable.OnInteractStart(this);
+
+                m_Animator.SetBool("IsPickingUp", true);
             }
         }
         else if (rewiredPlayer.GetButtonUp("Interact"))
