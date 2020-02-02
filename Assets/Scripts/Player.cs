@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
 
     //Fetch the Animator
     Animator m_Animator;
+    public Animation anim;
+    public Transform joint;
 
     private void Awake()
     {
@@ -85,7 +87,8 @@ public class Player : MonoBehaviour
 
                 closestInteractable.OnInteractStart(this);
 
-                m_Animator.SetBool("IsPickingUp", true);
+                //m_Animator.SetBool("IsPickingUp", true);
+                anim["Pickup"].AddMixingTransform(joint, true);
             }
         }
         else if (rewiredPlayer.GetButtonUp("Interact"))
