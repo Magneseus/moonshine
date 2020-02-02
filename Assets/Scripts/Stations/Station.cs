@@ -30,6 +30,7 @@ public abstract class Station : Interactable
         if (current >= 100)
         {
             Explode();
+            timeElapsed = animationLength;
         }
     }
 
