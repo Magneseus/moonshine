@@ -17,8 +17,6 @@ public class Player : MonoBehaviour
     private float input_horizontal, input_vertical, input_look_horizontal, input_look_vertical;
     private HashSet<Interactable> interactables = new HashSet<Interactable>();
 
-    private bool heldObjectStall = false;
-
     // Components
     public GameObject holdLocation;
     private GameObject heldObject;
@@ -59,7 +57,29 @@ public class Player : MonoBehaviour
             controller.Move(new Vector3(0.0f, -0.5f, 0.0f));
         }
 
-        if (rewiredPlayer.GetButtonUp("Interact"))
+        if (rewiredPlayer.GetButton("Interact"))
+        {
+            if (interactables.Count > 0)
+            {
+                // Find the closest interactable and interact with it
+                float minDist = float.MaxValue;
+                float dist;
+                Interactable closestInteractable = null;
+
+                foreach (Interactable interactable in interactables)
+                {
+                    dist = Vector3.Distance(this.transform.position, interactable.transform.position);
+                    if (dist < minDist)
+                    {
+                        minDist = dist;
+                        closestInteractable = interactable;
+                    }
+                }
+
+                closestInteractable.OnInteractStart(this);
+            }
+        }
+        else if (rewiredPlayer.GetButtonUp("Interact"))
         {
             // Dropping items
             RemoveAllInteractables();
@@ -71,6 +91,20 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void UpdateInputs()
+    {
+        //input_horizontal = Input.GetAxis("Horizontal");
+        //input_vertical = Input.GetAxis("Vertical");
+        input_horizontal = rewiredPlayer.GetAxis("MHorizontal");
+        input_vertical = rewiredPlayer.GetAxis("MVertical");
+
+        input_look_horizontal = rewiredPlayer.GetAxis("LHorizontal");
+        input_look_vertical = rewiredPlayer.GetAxis("LVertical");
+
+        //bool newInteract = Input.GetAxis("Submit") != 0.0f;
+        input_interacting = rewiredPlayer.GetButton("Interact");
+    }
+
     public bool SetHeldObject(GameObject heldObject)
     {
         if (this.heldObject)
@@ -78,7 +112,6 @@ public class Player : MonoBehaviour
 
         this.heldObject = Instantiate(heldObject, holdLocation.transform);
         this.heldObject.GetComponent<Rigidbody>().isKinematic = true;
-        this.heldObjectStall = true;
         
         return true;
     }
@@ -107,20 +140,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void UpdateInputs()
-    {
-        //input_horizontal = Input.GetAxis("Horizontal");
-        //input_vertical = Input.GetAxis("Vertical");
-        input_horizontal = rewiredPlayer.GetAxis("MHorizontal");
-        input_vertical = rewiredPlayer.GetAxis("MVertical");
-
-        input_look_horizontal = rewiredPlayer.GetAxis("LHorizontal");
-        input_look_vertical = rewiredPlayer.GetAxis("LVertical");
-
-        //bool newInteract = Input.GetAxis("Submit") != 0.0f;
-        input_interacting = rewiredPlayer.GetButton("Interact");
-    }
-
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         // Called when the character hits another object with a collider
@@ -133,10 +152,10 @@ public class Player : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         Interactable interactable;
-        if (IsInteracting() && other.gameObject.TryGetComponent<Interactable>(out interactable))
+        if (other.gameObject.TryGetComponent<Interactable>(out interactable))
         {
-            // If there is a valid interactable, interact with it
-            AddInteractable(interactable);
+            // If there is a valid interactable, add it to the list
+            interactables.Add(interactable);
         }
     }
 
@@ -146,25 +165,14 @@ public class Player : MonoBehaviour
         if (IsInteracting() && other.gameObject.TryGetComponent<Interactable>(out interactable))
         {
             // If there is a valid interactable, stop interaction
-            RemoveInteractable(interactable);
+            interactable.OnInteractExit(this);
+            interactables.Remove(interactable);
         }
     }
 
     public bool IsInteracting()
     {
         return input_interacting;
-    }
-
-    private void AddInteractable(Interactable interactable)
-    {
-        interactable.OnInteractStart(this);
-        interactables.Add(interactable);
-    }
-
-    private void RemoveInteractable(Interactable interactable)
-    {
-        interactable.OnInteractExit(this);
-        interactables.Remove(interactable);
     }
 
     private void RemoveAllInteractables()
