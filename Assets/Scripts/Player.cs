@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
 
         // Movement
         Vector3 movement = new Vector3(input_horizontal, 0.0f, input_vertical);
-        movement *= moveSpeed;
+        movement *= moveSpeed * Time.deltaTime;
         controller.Move(movement);
 
         // Setting anim params

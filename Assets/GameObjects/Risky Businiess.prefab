@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerId: 0
-  moveSpeed: 0.4
+  moveSpeed: 25
   holdLocation: {fileID: 4458285966306022857}
   anim: {fileID: 0}
   joint: {fileID: 2819444738395310434}
@@ -120,11 +120,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3744864747020508501}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 0d27ef4cc820b284887f3054a1d4784d,
-        type: 3}
-      propertyPath: m_Name
-      value: Player_Rigged
-      objectReference: {fileID: 0}
     - target: {fileID: -6057140222963153312, guid: 0d27ef4cc820b284887f3054a1d4784d,
         type: 3}
       propertyPath: m_Controller
@@ -184,6 +179,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 0d27ef4cc820b284887f3054a1d4784d,
+        type: 3}
+      propertyPath: m_Name
+      value: Player_Rigged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d27ef4cc820b284887f3054a1d4784d, type: 3}
