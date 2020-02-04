@@ -234,6 +234,56 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2823357702757837699, guid: 6f68e18b813bb474ca2a18e27222f148,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823357702757837699, guid: 6f68e18b813bb474ca2a18e27222f148,
+        type: 3}
+      propertyPath: m_UseCustomVertexStreams
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823357702757837699, guid: 6f68e18b813bb474ca2a18e27222f148,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823357702757837699, guid: 6f68e18b813bb474ca2a18e27222f148,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823357702757837699, guid: 6f68e18b813bb474ca2a18e27222f148,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[3]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923771907083820800, guid: 6f68e18b813bb474ca2a18e27222f148,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923771907083820800, guid: 6f68e18b813bb474ca2a18e27222f148,
+        type: 3}
+      propertyPath: m_UseCustomVertexStreams
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923771907083820800, guid: 6f68e18b813bb474ca2a18e27222f148,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923771907083820800, guid: 6f68e18b813bb474ca2a18e27222f148,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923771907083820800, guid: 6f68e18b813bb474ca2a18e27222f148,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[3]
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f68e18b813bb474ca2a18e27222f148, type: 3}
 --- !u!1 &3627826488112433277 stripped
@@ -476,6 +526,56 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FIRE SMALL
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813731408579130934, guid: 70b353fe756963043b4b7f19ef53e4d8,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813731408579130934, guid: 70b353fe756963043b4b7f19ef53e4d8,
+        type: 3}
+      propertyPath: m_UseCustomVertexStreams
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813731408579130934, guid: 70b353fe756963043b4b7f19ef53e4d8,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813731408579130934, guid: 70b353fe756963043b4b7f19ef53e4d8,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813731408579130934, guid: 70b353fe756963043b4b7f19ef53e4d8,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[3]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274161592378770101, guid: 70b353fe756963043b4b7f19ef53e4d8,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274161592378770101, guid: 70b353fe756963043b4b7f19ef53e4d8,
+        type: 3}
+      propertyPath: m_UseCustomVertexStreams
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274161592378770101, guid: 70b353fe756963043b4b7f19ef53e4d8,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274161592378770101, guid: 70b353fe756963043b4b7f19ef53e4d8,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274161592378770101, guid: 70b353fe756963043b4b7f19ef53e4d8,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[3]
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70b353fe756963043b4b7f19ef53e4d8, type: 3}
