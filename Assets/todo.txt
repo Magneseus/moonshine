@@ -2,7 +2,6 @@
 | UI |
 +----+
 |-> Card/Order System
-|   |-> Fix card placement on screen
 |   |-> Fix decay bars on cards
 
 +----------+
