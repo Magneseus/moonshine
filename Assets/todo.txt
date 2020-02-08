@@ -1,0 +1,16 @@
++----+
+| UI |
++----+
+|-> Card/Order System
+|   |-> Fix card placement on screen
+|   |-> Fix decay bars on cards
+
++----------+
+| Gameplay |
++----------+
+|-> Orders
+|   |-> Tweak generation timing
+|   |-> Tweak generation system (allow for more order types?)
+|-> Systems
+|   |-> Explosions
+|   |-> Other effects
