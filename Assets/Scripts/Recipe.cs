@@ -45,7 +45,7 @@ public class Recipe : Object
 
     public float GetPercentage()
     {
-        return GetTimeLeft() / recipeTime;
+        return 1.0f - (GetTimeLeft() / recipeTime);
     }
 
     public bool VerifyRecipe(Recipe otherRecipe)

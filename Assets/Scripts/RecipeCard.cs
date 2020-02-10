@@ -25,6 +25,7 @@ public class RecipeCard : MonoBehaviour
 
     private void SetPercentage(float newPercentage)
     {
+        Debug.Log(string.Format("Percentage: {0}", newPercentage));
         progressBar.setPercentage(Mathf.Max(newPercentage, 0.0f));
     }
 
