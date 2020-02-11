@@ -25,7 +25,6 @@ public class RecipeCard : MonoBehaviour
 
     private void SetPercentage(float newPercentage)
     {
-        Debug.Log(string.Format("Percentage: {0}", newPercentage));
         progressBar.setPercentage(Mathf.Max(newPercentage, 0.0f));
     }
 
@@ -35,7 +34,8 @@ public class RecipeCard : MonoBehaviour
         SetPercentage(perc);
         if (perc <= 0)
         {
-            Destroy(this);
+            this.gameObject.GetComponentInParent<OrderUI>().RemoveOrderCard(this);
+            Destroy(this.gameObject);
         }
     }
 }

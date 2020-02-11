@@ -35,6 +35,11 @@ public class OrderUI : MonoBehaviour
         StartCoroutine("Shift");
     }
 
+    public void RemoveOrderCard(RecipeCard card)
+    {
+        orderUIList.Remove(card);
+    }
+
     IEnumerator Shift()
     {
         for (int i = 0; i < moveTime; i++)

@@ -10,27 +10,19 @@ public class Progressbar : MonoBehaviour
     public Color endColor;
 
     private float curValNormalized = 0.0f;
-    private float maxWidth;
-    private RawImage image;
-    private RectTransform rect;
+    private Scrollbar bar;
 
     private void Start()
     {
-        if (!TryGetComponent<RawImage>(out image))
+        if (!TryGetComponent<Scrollbar>(out bar))
         {
-            Debug.LogError(string.Format("Progressbar {0} does not have an image!", this.name));
+            Debug.LogError(string.Format("Progressbar {0} does not have a scrollbar!", this.name));
         }
-        if (!TryGetComponent<RectTransform>(out rect))
-        {
-            Debug.LogError(string.Format("Progressbar {0} does not have a RectTransform!", this.name));
-        }
-
-        maxWidth = rect.sizeDelta.x;
     }
 
     public void setPercentage(float newPercentage)
     {
-        curValNormalized = newPercentage / 100.0f;
+        curValNormalized = newPercentage;
 
         if (curValNormalized < 0.5f)
         {
@@ -41,11 +33,13 @@ public class Progressbar : MonoBehaviour
             SetColor(Color.Lerp(midColor, startColor, curValNormalized));
         }
 
-        rect.sizeDelta = new Vector2(Mathf.Lerp(0.0f, maxWidth, curValNormalized), rect.sizeDelta.y);
+        bar.size = newPercentage;
     }
 
     private void SetColor(Color color)
     {
-        image.color = color;
+        ColorBlock colors = bar.colors;
+        colors.disabledColor = color;
+        bar.colors = colors;
     }
 }
