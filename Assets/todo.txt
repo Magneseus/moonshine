@@ -1,8 +1,7 @@
 +----+
 | UI |
 +----+
-|-> Card/Order System
-|   |-> Fix decay bars on cards
+|->
 
 +----------+
 | Gameplay |
